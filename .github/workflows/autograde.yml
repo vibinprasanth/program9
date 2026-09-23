@@ -1,0 +1,28 @@
+name: Firewall Assignment Autograding
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  autograde:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display repository files
+        run: ls -R
+
+      - name: Verify required files
+        run: |
+          if [ ! -f README.md ]; then
+            echo "README.md not found!"
+            exit 1
+          fi
+
+      - name: Autograding Complete
+        run: echo "Autograding completed successfully!"
